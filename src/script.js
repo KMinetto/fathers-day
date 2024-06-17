@@ -6,16 +6,9 @@ import {
 } from 'three/examples/jsm/Addons.js';
 
 import gsap from 'gsap';
-import GUI from 'lil-gui';
 
 import vShader from './shaders/vertex.glsl';
 import fShader from './shaders/fragment.glsl';
-
-/**
- * Base
- */
-// Debug
-const gui = new GUI();
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl');
@@ -234,16 +227,6 @@ function updateSky() {
     renderer.render( scene, camera );
 
 }
-
-const skyGUI = gui.addFolder("Sky");
-
-skyGUI.add( skyParameters, 'turbidity', 0.0, 20.0, 0.1 ).onChange( updateSky );
-skyGUI.add( skyParameters, 'rayleigh', 0.0, 4, 0.001 ).onChange( updateSky );
-skyGUI.add( skyParameters, 'mieCoefficient', 0.0, 0.1, 0.001 ).onChange( updateSky );
-skyGUI.add( skyParameters, 'mieDirectionalG', 0.0, 1, 0.001 ).onChange( updateSky );
-skyGUI.add( skyParameters, 'elevation', -3, 90, 0.001 ).onChange( updateSky );
-skyGUI.add( skyParameters, 'azimuth', - 180, 180, 0.1 ).onChange( updateSky );
-skyGUI.add( skyParameters, 'exposure', 0, 1, 0.0001 ).onChange( updateSky );
 
 updateSky();
 
